@@ -6,6 +6,8 @@ import sys
 
 def main():
     """Run administrative tasks."""
+    # This to stop generating scripting files
+    sys.dont_write_bytecode = True
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'competition.settings')
     try:
         from django.core.management import execute_from_command_line
