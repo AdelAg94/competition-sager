@@ -16,7 +16,7 @@ class Participant(models.Model):
     phone_number = models.CharField(validators = [phoneNumberRegex], max_length = 16, unique = True)
     photo = models.ImageField(upload_to='media/participants', null=True, blank=True)
     country = CountryField()
-    skills = models.ManyToManyField(Skill)
+    skills = models.ManyToManyField(Skill, null=True)
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name + " - " + self.user.username

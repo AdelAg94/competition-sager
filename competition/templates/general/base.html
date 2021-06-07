@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 </head>
 <body>
-    <h1>Hello World</h1>
+    {% block style %}
+    <!-- Type the nav here  -->
+    {% endblock %}
+    
     {% block content %}
 
     {% endblock %}

@@ -1,0 +1,102 @@
+{% extends "general/base.html" %}
+{% block title %}
+Login | Register
+{% endblock %}
+{% block style %}
+    {% include 'css/login-css.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card-header">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Register</label>
+    </div>
+    <div class="card-body">
+        <div class="login-form">
+            <form action="">
+			<div class="sign-in-htm">
+				<div class="group">
+					<label for="user" class="label">Username</label>
+					<input id="user" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Password</label>
+					<input id="pass_2" type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="Sign In">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="#forgot">Forgot Password?</a>
+				</div>
+			</div>
+            </form>
+            <form action="">
+			<div class="sign-up-htm">
+
+				<div class="group">
+					<label for="user" class="label">First Name</label>
+					<input id="user_2" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="user" class="label">Last Name</label>
+					<input id="aa" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="user" class="label">Username</label>
+					<input id="bb" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="user" class="label">Country</label>
+					{{fields.country}}
+				</div>
+				<div class="group">
+					<label for="user" class="label">Phone Number</label>
+					<input id="cc" type="tel" class="input" pattern="^\+?1?\d{8,15}$" title="Please enter Number like this: +96279000000 which starts with country code">
+				</div>
+                <div class="group">
+					<label for="pass" class="label">Email Address</label>
+					<input id="dd" type="email" class="input" title="Please enter valid email. example@cc.com">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Password</label>
+					<input id="pass" type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="Sign Up">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<label for="tab-1">Already Member?</a>
+				</div>
+			</div>
+            </form>
+		</div>
+    </div>
+
+
+</div>
+
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
