@@ -18,11 +18,12 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import include
-from general.views import home, loginForm, usersList
+from general.views import home, logIn, overview ,usersList
 	
 
 urlpatterns = [
-    path('', home),
-    path('login/', loginForm),
+    path('', overview),
+    path('home/', home),
+    path('login/', logIn),
     path('users/', usersList),
 ] 

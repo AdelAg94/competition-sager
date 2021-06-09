@@ -26,16 +26,17 @@ Login | Register
 
 			<div class="card-body">
 				<div class="login-form">
-					<form action="">
+					<form action="/login/" method="POST">
+						{% csrf_token %}
 					<div class="sign-in-htm">
 						<div class="row justify-content-center">
 							<div class="group col-lg-4 col-12">
-								<label for="user" class="label">Username</label>
-								<input id="user" type="text" class="input">
+								<label for="username" class="label">Username</label>
+								<input id="username" name="username" type="text" class="input">
 							</div>
 							<div class="group col-lg-4 col-12">
-								<label for="pass" class="label">Password</label>
-								<input id="pass_2" type="password" class="input" data-type="password">
+								<label for="password" class="label">Password</label>
+								<input id="password" name="password" type="password" class="input" data-type="password">
 							</div>
 						</div>
 						<div class="row justify-content-center">
@@ -60,7 +61,8 @@ Login | Register
 
 			<div class="card-body">
 				<div class="login-form">
-					<form action="">
+					<form action="/register" method="POST">
+						{% csrf_token %}
 					<div class="sign-up-htm">
 						
 						<div class="row justify-content-center">

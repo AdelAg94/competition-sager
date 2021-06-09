@@ -1,0 +1,19 @@
+{% extends "general/base.html" %}
+{% block title %}
+{{page_title}}
+{% endblock %}
+
+{% block content %}
+<div class="alert alert-primary" role="alert">
+    Hello {{user.first_name}}, you are logged in
+  </div>
+  <h1 id="hello">
+      Hello Again
+  </h1>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$("#hello").css('color','green')
+</script>
+{% endblock %}
