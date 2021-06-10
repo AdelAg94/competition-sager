@@ -4,6 +4,10 @@ from django.core.validators import RegexValidator
 from django_countries.fields import CountryField
 # Create your models here.
 
+# This to make email unqiue for users 
+from django.contrib.auth.models import User
+User._meta.get_field('email')._unique = True
+
 class Skill(models.Model):
     name = models.CharField(max_length=265, unique=True)
 
@@ -19,4 +23,5 @@ class Participant(models.Model):
     skills = models.ManyToManyField(Skill, blank=True)
 
     def __str__(self):
-        return self.user.first_name + " " + self.user.last_name + " - " + self.user.username
+        # return self.user.first_name + " " + self.user.last_name + " - " + self.user.username
+        return self.phone_number

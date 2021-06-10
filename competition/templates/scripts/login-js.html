@@ -1,3 +1,4 @@
+{% csrf_token %}
 <script>
     $(document).ready(function(){
        
@@ -17,5 +18,57 @@
             })
            
         })    
+    
+        // This will register the user 
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        $("#register-form").submit(function(e){
+            e.preventDefault()
+            var data = new FormData(this)
+            $.ajax({
+	            method: "POST",
+	            contentType:'application/json',
+	            headers: {
+	                'X-CSRFToken': csrftoken,
+	            },
+	            url: `/register/`,
+	            data: data,
+	            contentType:false,
+	            processData:false,
+	            beforeSend: function(){
+	                // $("#preloader").css('display','block')
+	                // $("#preloader").css('z-index','10')
+	                // $("#preloader").css('opacity','0.7')
+	            },
+	            success: function(response){
+	               //This to check errors
+	               if(response.errors){
+	                for (const e in response.errors) {
+	                    alert(e + " "+ response.errors[e])
+	                }
+	            }
+	            else{
+	                // $(".create-item-page").css('opacity','0.1')
+	                // $(".response_success").css('display', "block")
+	                setTimeout(function(){
+	                            $(".response_success").hide(2000, function(){
+	                                    $(this).css('display', "none")
+	                                    })
+	                    }, 3000)
+	                // This to close window after creating the item 
+                    setTimeout(function(){
+                        window.location = '/home'
+                    }, 4000)
+	                
+	                }
+	            },
+	            error: function(error){
+	                console.log(error)
+	            },
+	            complete: function(){
+	                // $("#preloader").css('display','none')
+	            }
+        })
+
+        })
     })
 </script>
