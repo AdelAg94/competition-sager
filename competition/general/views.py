@@ -35,11 +35,14 @@ def logIn(request):
             return redirect('/home')
         else:
             form = ParticipantForm_F()
-            user = request.user
+            user = User.objects.filter(username=username)
+            errors = 'There is no username with this input. Please try again'
+            if len(user) > 0:
+                errors = 'Password is wrong. Please try again'
             fields = {}
             for field in form:
                     fields[field.name] = field
-            context = {'form':form, 'fields':fields, 'page_name':'Sign In | Register'}
+            context = {'form':form, 'fields':fields, 'errors':errors, 'page_name':'Sign In | Register'}
             return render(request,'general/login.html', context)
     except:
         form = ParticipantForm_F()

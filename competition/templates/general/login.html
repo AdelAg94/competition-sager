@@ -8,6 +8,19 @@ Login | Register
 
 {% block content %}
 
+<div id="error-container" class="justify-content-center"
+	{% if errors %}
+	style="display: block;"
+	{% else %}
+ style="display: none;"
+	{% endif %}
+ >
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		<strong>Sorry!</strong> <span id="error-message">{{errors}}</span>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	  </div>
+</div>
+
 <div class="login-container">
 <div class="card text-white bg-dark mb-3" style="width: 90%;">
 	<div class="card-header">
@@ -32,11 +45,11 @@ Login | Register
 						<div class="row justify-content-center">
 							<div class="group col-lg-4 col-12">
 								<label for="username" class="label">Username</label>
-								<input id="username" name="username" type="text" class="input">
+								<input id="username" name="username" type="text" class="input" required>
 							</div>
 							<div class="group col-lg-4 col-12">
 								<label for="password" class="label">Password</label>
-								<input id="password" name="password" type="password" class="input" data-type="password">
+								<input id="password" name="password" type="password" class="input" data-type="password" required>
 							</div>
 						</div>
 						<div class="row justify-content-center">
@@ -67,15 +80,15 @@ Login | Register
 						<div class="row justify-content-center">
 							<div class="group col-lg-4 col-12">
 								<label for="first_name" class="label">First Name</label>
-								<input id="first_name" type="text" class="input" name="first_name">
+								<input id="first_name" type="text" class="input" name="first_name"required>
 							</div>
 							<div class="group col-lg-4 col-12">
 								<label for="last_name" class="label">Last Name</label>
-								<input id="last_name" type="text" class="input" name="last_name">
+								<input id="last_name" type="text" class="input" name="last_name" required>
 							</div>
 							<div class="group col-lg-4 col-12">
 								<label for="user" class="label">Username</label>
-								<input id="user" type="text" class="input" name="user">
+								<input id="user" type="text" class="input" name="user"required>
 							</div>
 							<div class="group col-lg-4 col-12">
 								<label for="id_country" class="label">Country</label>
@@ -83,7 +96,7 @@ Login | Register
 							</div>
 							<div class="group col-lg-4 col-12">
 								<label for="phone_number" class="label">Phone Number</label>
-								<input id="phone_number" name="phone_number" type="tel" class="input" pattern="^\+?1?\d{8,15}$" title="Please enter Number like this: +96279000000 which starts with country code">
+								<input id="phone_number" name="phone_number" type="tel" class="input" pattern="^\+?1?\d{8,15}$" title="Please enter Number like this: +96279000000 which starts with country code" required>
 							</div>
 							<div class="group col-lg-4 col-12">
 								<label for="email" class="label">Email Address</label>
@@ -91,7 +104,7 @@ Login | Register
 							</div>
 							<div class="group col-lg-4 col-12">
 								<label for="pass" class="label">Password</label>
-								<input id="pass" name="pass" type="password" class="input" data-type="password">
+								<input id="pass" name="pass" type="password" class="input" data-type="password" required>
 							</div>
 						</div>
 

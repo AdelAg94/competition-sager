@@ -35,6 +35,7 @@
 	            contentType:false,
 	            processData:false,
 	            beforeSend: function(){
+					$("#error-container").css('display','none')
 	                // $("#preloader").css('display','block')
 	                // $("#preloader").css('z-index','10')
 	                // $("#preloader").css('opacity','0.7')
@@ -42,9 +43,13 @@
 	            success: function(response){
 	               //This to check errors
 	               if(response.errors){
+					$("#error-message").html('')
+					$("#error-container").css('display','block')
 	                for (const e in response.errors) {
-	                    alert(e + " "+ response.errors[e])
+					$("#error-message").html(response.errors[e])
 	                }
+
+
 	            }
 	            else{
 	                // $(".create-item-page").css('opacity','0.1')
