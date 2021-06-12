@@ -74,7 +74,7 @@ Login | Register
 
 			<div class="card-body">
 				<div class="login-form">
-					<form action="/" method="POST" id="register-form">
+					<form action="/" data-enctype="multipart/form-data" method="POST" id="register-form">
 					<div class="sign-up-htm">
 						
 						<div class="row justify-content-center">
@@ -88,7 +88,12 @@ Login | Register
 							</div>
 							<div class="group col-lg-4 col-12">
 								<label for="user" class="label">Username</label>
-								<input id="user" type="text" class="input" name="user"required>
+								<input id="user" type="text" class="input" name="user" required>
+							</div>
+							<div class="group col-lg-4 col-12">
+								<label for="photo" class="label">Photo</label>
+								<!-- <input id="photo" type="file" class="input" name="photo" required> -->
+								{{fields.photo}}
 							</div>
 							<div class="group col-lg-4 col-12">
 								<label for="id_country" class="label">Country</label>

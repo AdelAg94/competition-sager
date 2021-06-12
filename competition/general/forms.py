@@ -10,5 +10,5 @@ class ParticipantForm_F(forms.ModelForm):
             'phone_number':  forms.TextInput(attrs={'class':'form-control'}),
             'country':  forms.Select(attrs={'class':'input'}),
             'skills':  forms.Select(attrs={'class':'form-control'}),
-            'photo':  forms.ClearableFileInput(attrs={'class':'form-control'}),
+            'photo':  forms.ClearableFileInput(attrs={'class':'form-control input'}),
         }   

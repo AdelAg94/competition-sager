@@ -4,9 +4,10 @@ from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.db.models import F
 from .forms import ParticipantForm_F
 from .serializers import ParticipantSerializer
-from .models import Participant
+from .models import Participant, Competition
 # Create your views here.
 
 def overview(request):
@@ -22,7 +23,25 @@ def overview(request):
 
 @login_required(login_url='/login')
 def home(request):
-    context = {'page_title':'Sager | Home'}
+    competitions = Competition.objects.all().prefetch_related('qualifications').annotate(quali=F('qualifications__description')).values('name','quali')
+    competitions_new = []
+    name = None
+    counter = 0
+    comp_dic = {'name':0,'quali':[]}
+    for item in competitions:
+        comp_dic['name'] = item['name']
+        if name == item['name']:
+            comp_dic['quali'].append(item['quali'])
+        else:
+            if name != None:
+                counter+=1
+            comp_dic['quali'] = [item['quali'],]
+        try:
+            competitions_new[counter] = comp_dic.copy()
+        except:
+            competitions_new.append(comp_dic.copy())
+        name = item['name']
+    context = {'competitions':competitions_new,'page_title':'Sager | Home'}
     return render(request,'general/home_reg.html', context)
 
 def logIn(request):
@@ -67,6 +86,8 @@ def register(request):
     # print(user_data)
     part_data['phone_number'] = data['phone_number']
     part_data['country'] = data['country']
+    print(data['photo'])
+    part_data['photo'] = data['photo']
     # print(part_data)
     serializer = ParticipantSerializer(data= part_data)
     if serializer.is_valid():

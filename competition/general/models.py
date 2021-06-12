@@ -24,3 +24,20 @@ class Participant(models.Model):
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name + " - " + self.user.username
+
+class Competition(models.Model):
+    name = models.CharField(max_length=265, unique=True)
+    description = models.CharField(max_length=1500, null=True, blank=True)
+    skills = models.ManyToManyField(Skill, blank=True)
+    photo = models.ImageField(upload_to='media/competitions', null=True, blank=True)
+    participants = models.ManyToManyField(Participant, blank=True)
+
+    def __str__(self):
+        return self.name
+
+class Qualification(models.Model):
+    description = models.CharField(max_length=265)
+    competition = models.ForeignKey(Competition,on_delete=models.CASCADE, blank=True, null=True, related_name='qualifications')
+
+    def __str__(self):
+        return self.description[0:10]
