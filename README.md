@@ -4,6 +4,13 @@
 <p> Prerequists are: </p>
 <ol>
  <li> Python 3.9 </li>
+ <li> requiremets.txt, if not found you can see these packages to install inside your virtual environment </li>
+ <p> 
+     django==3.2.4
+     djangorestframework==3.12.2
+     django-countries==7.2.1
+     Pillow==8.1.2 
+ <p>
 </ol>
 
 <p> After installing Python 3.9.2, and download the project </p>
