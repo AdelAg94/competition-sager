@@ -22,6 +22,7 @@
 <ol>
  <li> Go to the root directory and install venv on by using this command on Terminal of VScode or cmd 
   <br>
+  <br>
   <strong >python -m venv . </strong> 
  </li>
  <li> If you work on Windows OS then run this code to activate venv on Termina of VScode or cmd on the root directory
