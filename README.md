@@ -14,8 +14,7 @@
   <br>
      Pillow==8.1.2 
   <br>
-   <br>
-   <br>
+
  <p>
 </ol>
 
@@ -24,7 +23,8 @@
 <ol>
  <li> Go to the root directory and install venv on by using this command on Terminal of VScode or cmd 
   <br>
-  <strong >   <br> python -m venv .    <br></strong> 
+  <strong >   <br> python -m venv .    <br>    <br>
+   <br> </strong> 
  </li>
  <li> If you work on Windows OS then run this code to activate venv on Termina of VScode or cmd on the root directory
   <br>
