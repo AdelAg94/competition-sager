@@ -89,7 +89,7 @@
   <tr>
     <td>admin</td>
     <td>admin</td>
-    <td>normal user</td>
+    <td>superuser</td>
   </tr>
   <tr>
     <td>adel4</td>
