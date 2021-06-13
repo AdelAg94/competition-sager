@@ -1,5 +1,5 @@
 # competition-sager
- 
+
 <h1> This is registertations django project </h1>
 <p> Prerequists are: </p>
 <ol>
