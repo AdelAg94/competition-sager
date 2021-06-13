@@ -146,8 +146,7 @@ def register(request):
     else:
         return Response({'errors':serializer.errors})
 
-@api_view(['GET', 'POST'])
-def usersList(request):
+
     querys = list(User.objects.all().values())
     queryset = User.objects.all().values()
     # print(querys)
@@ -156,3 +155,20 @@ def usersList(request):
     print(serializer)
     # return Response(serializer.data)
     return Response(serializer.initial_data)
+
+@login_required(login_url='/login')
+@api_view(['PUT'])
+def enroll(request, id):
+    user = request.user
+    participant = Participant.objects.get(user=user)
+    competition = Competition.objects.get(id=id)
+    try:
+        competition.participants.add(participant)
+        print('Complete done')
+        return Response({'message':'Congrats! You have enrolled'})
+    except Exception as e:
+        error = []
+        error.append(e.__str__())
+        print('There is an error')
+        return Response({'errors':error})
+        

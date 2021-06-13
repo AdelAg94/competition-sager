@@ -1,5 +1,5 @@
 from django import forms
-from .models import Participant, CountryField
+from .models import Participant, CountryField, Competition
 
 class ParticipantForm_F(forms.ModelForm):
     class Meta:
@@ -11,4 +11,4 @@ class ParticipantForm_F(forms.ModelForm):
             'country':  forms.Select(attrs={'class':'input'}),
             'skills':  forms.SelectMultiple(attrs={'class':'input picker'}),
             'photo':  forms.ClearableFileInput(attrs={'class':'input'}),
-        }   
+        }

@@ -8,6 +8,7 @@
 	 flex: 3 1 30ch;
 	 height: calc(282px + 5vw);
 	 overflow: hidden;
+	 border: 2px solid #85898f57;
 }
  .pizza-box img {
 	 max-width: 100%;
@@ -100,5 +101,27 @@
 	 width: clamp(320px, 35%, 480px);
 	 padding: 24px;
 }
- 
+ /* This for success message after ajax  */
+ #success-message{
+	            width: 90%;
+	            font-size: larger;
+	            position: fixed;
+	            text-align: center;
+	            top: 50%;
+	            left: 5%;
+	            display: none;
+	            margin-right: -50%;
+	        }
+
+/* This for error message after ajax	 */
+#error-message{
+		width: 90%;
+		font-size: larger;
+		position: fixed;
+		text-align: center;
+		top: 50%;
+		left: 5%;
+		display: none;
+		margin-right: -50%;
+}
 </style>
