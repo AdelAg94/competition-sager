@@ -8,6 +8,6 @@
 
 <p> After installing Python 3.9.2, and download the project </p>
 <ol>
- <li> Go to the root directory and install venv on by using this command <span style="color:green;">python -m venv . </span> </li>
+ <li style="color:green;"> Go to the root directory and install venv on by using this command <span >python -m venv . </span> </li>
  
  </ol>
