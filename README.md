@@ -23,5 +23,7 @@
   <br>
   <strong >python -m venv . </strong> 
  </li>
- 
+ <li> If you work on Windows OS then run this code to activate venv on Termina of VScode or cmd
+  <strong >scripts/activate</strong> 
+ </li>
  </ol>
