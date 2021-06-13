@@ -1,7 +1,8 @@
 # competition-sager
 
 <h1> This is registration django project </h1>
-<p> Prerequists are: </p>
+<ul>
+<li> <p> Prerequists are: </p>
 <ol>
  <li> Python 3.9.5 (Or install any version above 3.6)</li>
  <li> requiremets.txt, if not found you can see these packages to install inside your virtual environment:</li>
@@ -17,7 +18,9 @@
 
  <p>
 </ol>
-
+</li>
+ 
+ <li>
 <p> After installing Python 3.9.2, and download the project </p>
 
 <ol>
@@ -73,7 +76,9 @@
  </strong> 
  </li>
  </ol>
+ </li>
  
+ <li>
  <h3>Here you will see a list of participants/users for test to login, any one if you don't want you can register for a new user </h3>
  <table>
   <tr>
@@ -137,6 +142,9 @@
     <td>normal user</td>
   </tr>
 </table>
-
-<p>To add any competition and add more you need to user 'admin' user which superuser and go to 'doman/admin'  example '127.0.0.1:8000/admin' <p>
-<p> Which is a built-in django admin interface </p>
+</li>
+ 
+ <li>
+<p>To add any competition and add more you need to user 'admin' user which superuser and go to 'doman/admin'  example '127.0.0.1:8000/admin' Which is a built-in django admin interface </p>
+ </li>
+ </ul>
