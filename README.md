@@ -97,11 +97,6 @@
     <td>normal user</td>
   </tr>
   <tr>
-    <td>ayham</td>
-    <td>asd</td>
-    <td>normal user</td>
-  </tr>
-  <tr>
     <td>bahaa</td>
     <td>asd</td>
     <td>normal user</td>
