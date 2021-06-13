@@ -18,6 +18,7 @@
 </ol>
 
 <p> After installing Python 3.9.2, and download the project </p>
+
 <ol>
  <li> Go to the root directory and install venv on by using this command on Terminal of VScode or cmd 
   <br>
