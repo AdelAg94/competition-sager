@@ -23,29 +23,29 @@
 <ol>
  <li> Go to the root directory and install venv on by using this command on Terminal of VScode or cmd 
   <br>
-  <strong >   <br> python -m venv .    <br>    <br>
+  <strong >   <br> python -m venv .    <br>    
    <br> </strong> 
  </li>
  <li> If you work on Windows OS then run this code to activate venv on Termina of VScode or cmd on the root directory
   <br>
-  <strong >   <br> scripts/activate   <br></strong> 
+  <strong >   <br> scripts/activate   <br> <br> </strong> 
  </li>
   <li> After activation of the venv, using cmd or VScode Terminal change directory (cd) to 'competition' folder
   <br>
-  <strong >   <br> cd competition   <br></strong> 
+  <strong >   <br> cd competition   <br> <br></strong> 
  </li>
    <li>(Optional) Be sure that you are in the folder that has these files (manage.py , requirements.txt) by using ls command inside Terminal VScode or cmd
   <br>
-  <strong >   <br> ls   <br></strong> 
+  <strong >   <br> ls   <br> <br></strong> 
  </li>
     <li> install packages that are in requirements.txt file using this command in Terminal of VScode or cmd
   <br>
-  <strong >  <br> pip install -r requirements.txt   <br></strong> 
+  <strong >  <br> pip install -r requirements.txt   <br> <br></strong> 
  </li>
  
   <li> Wait until the required packages were installed, after they are installed run this command on Terminal of VScode or cmd, be sure you are in the same folder that has these files (manage.py, requirements.txt)
   <br>
-  <strong >   <br> python manage.py runserver  <br></strong> 
+  <strong >   <br> python manage.py runserver  <br> <br></strong> 
  </li>
  
    <li> (Note) | (Optional) for the last point you can runserver on your local IP address with open port to open the website from mobile on the same network and here is an example:
@@ -53,7 +53,7 @@
       <br>
   <strong >python manage.py runserver 192.168.1.<your_last_ip_number>:2020</strong>
     <strong>python manage.py runserver 192.168.1.71:2020</strong>
-     <br>
+     <br> <br>
  </li>
 
   <li> After run the runserver command, you will see this output on Terminal VScode or cmd, then copy the ip:port 127.0.0.1:8000 or combine ctrl + left click 
@@ -69,7 +69,7 @@
            Starting development server at http://127.0.0.1:8000/
             <br>
            Quit the server with CTRL-BREAK.
-     <br>
+     <br> <br>
  </strong> 
  </li>
  </ol>
