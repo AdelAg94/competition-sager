@@ -4,24 +4,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="alert alert-primary" role="alert">
-    Hello {{user.first_name}}, you are logged in
-  </div>
-  <h1 id="hello">
-      Hello Again
-  </h1>
-  <h2>
-    Here is a list of all competitions
-  </h2>
-  <ol>
-    {% for compt in competitions %}
-    <li>{{compt.name}} - 
-      {% for item in compt.quali %}
-      * {{item}}
-      {% endfor %}
-    </li>
-    {% endfor %}
-  </ol>
+
+
 {% endblock %}
 
 {% block scripts %}

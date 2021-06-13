@@ -16,6 +16,7 @@ class Skill(models.Model):
 
 class Participant(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True,null=True)
+    title = models.CharField(max_length=265, default='Web Developer')
     phoneNumberRegex = RegexValidator(regex = r"^\+?1?\d{8,15}$")
     phone_number = models.CharField(validators = [phoneNumberRegex], max_length = 16, unique = True)
     photo = models.ImageField(upload_to='media/participants', null=True, blank=True)
@@ -40,4 +41,4 @@ class Qualification(models.Model):
     competition = models.ForeignKey(Competition,on_delete=models.CASCADE, blank=True, null=True, related_name='qualifications')
 
     def __str__(self):
-        return self.description[0:10]
+        return str(self.competition) + " - "  +  self.description[0:10] 

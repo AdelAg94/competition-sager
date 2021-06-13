@@ -91,6 +91,10 @@ Login | Register
 								<input id="user" type="text" class="input" name="user" required>
 							</div>
 							<div class="group col-lg-4 col-12">
+								<label for="title" class="label">Title</label>
+								<input id="title" type="text" class="input" name="title" title="Example: Web developer, Software Engineer" required>
+							</div>
+							<div class="group col-lg-4 col-12">
 								<label for="photo" class="label">Photo</label>
 								<!-- <input id="photo" type="file" class="input" name="photo" required> -->
 								{{fields.photo}}
@@ -98,6 +102,10 @@ Login | Register
 							<div class="group col-lg-4 col-12">
 								<label for="id_country" class="label">Country</label>
 								{{fields.country}}
+							</div>
+							<div class="group col-lg-4 col-12">
+								<label for="id_skills" class="label">Skills</label>
+								{{fields.skills}}
 							</div>
 							<div class="group col-lg-4 col-12">
 								<label for="phone_number" class="label">Phone Number</label>
@@ -119,6 +127,7 @@ Login | Register
 							</div>
 						</div>
 						<div class="hr"></div>
+						  
 						<div class="foot-lnk go-signin">
 							<a href="#" >
 							<label for="tab-1" style="text-decoration: underline;

@@ -24,6 +24,8 @@
         $("#register-form").submit(function(e){
             e.preventDefault()
             var data = new FormData(this)
+			data.delete('skills')
+			data.append('skills',$("#id_skills").val())
             $.ajax({
 	            method: "POST",
 	            // contentType:'application/json',
@@ -75,5 +77,8 @@
         })
 
         })
+		
+		// This to select picker of skills 
+		$(".picker").picker({search : true});
     })
 </script>

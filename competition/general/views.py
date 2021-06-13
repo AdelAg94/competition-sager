@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import F
 from .forms import ParticipantForm_F
 from .serializers import ParticipantSerializer
 from .models import Participant, Competition
+from .functions import getPartiCountry, listCountryPartis, enrolledcompets, notenrolledcompets, fullcompets, adminUser
 # Create your views here.
 
 def overview(request):
@@ -23,26 +24,50 @@ def overview(request):
 
 @login_required(login_url='/login')
 def home(request):
-    competitions = Competition.objects.all().prefetch_related('qualifications').annotate(quali=F('qualifications__description')).values('name','quali')
-    competitions_new = []
-    name = None
-    counter = 0
-    comp_dic = {'name':0,'quali':[]}
-    for item in competitions:
-        comp_dic['name'] = item['name']
-        if name == item['name']:
-            comp_dic['quali'].append(item['quali'])
-        else:
-            if name != None:
-                counter+=1
-            comp_dic['quali'] = [item['quali'],]
-        try:
-            competitions_new[counter] = comp_dic.copy()
-        except:
-            competitions_new.append(comp_dic.copy())
-        name = item['name']
-    context = {'competitions':competitions_new,'page_title':'Sager | Home'}
+    if adminUser(request) == True:
+        return redirect('/admin')
+    context = { 'page_title':'Sager | Home'}
     return render(request,'general/home_reg.html', context)
+
+@login_required(login_url='/login')
+def competitions(request):
+    if adminUser(request) == True:
+        return redirect('/admin')
+    enroll_competitions = enrolledcompets(request)
+    noenroll_competitions = notenrolledcompets(request)
+    context = {'notenrolled':noenroll_competitions, 'enrolled':enroll_competitions, 'page_title':'Sager | Competitions'}
+    return render(request,'general/competitions.html', context)
+
+@login_required(login_url='/login')
+def participants(request):
+    if adminUser(request) == True:
+        return redirect('/admin')
+    user = request.user
+    user_country = getPartiCountry(request)
+    country_participants = listCountryPartis(user_country).exclude(user=user)
+    other_participants = Participant.objects.exclude(country=user_country)
+    context = {'country':user_country,'country_participants':country_participants,'other_participants':other_participants ,'page_title':'Sager | Participants'}
+    return render(request,'general/participants.html', context)
+
+@login_required(login_url='/login')
+def participant(request, id):
+    if adminUser(request) == True:
+        return redirect('/admin')
+    user_country = getPartiCountry(request)
+    participant = Participant.objects.get(id=id)
+    country = participant.country.name
+    context = {'country':country,'participant':participant,'page_title':'Sager | Participant Details'}
+    return render(request,'general/participant.html', context)
+
+@login_required(login_url='/login')
+def profile(request):
+    if adminUser(request) == True:
+        return redirect('/admin')
+    country = getPartiCountry(request).name
+    user = request.user
+    participant = Participant.objects.get(user=user)
+    context = {'country':country,'participant':participant,'page_title':'Sager | My Profile'}
+    return render(request,'general/profile.html', context)
 
 def logIn(request):
     try:
@@ -72,6 +97,11 @@ def logIn(request):
         context = {'form':form, 'fields':fields, 'page_name':'Sign In | Register'}
         return render(request,'general/login.html', context)
 
+@login_required(login_url='/login')
+def logOut(request):
+    logout(request)
+    return redirect('/')
+
 @api_view(['POST'])
 def register(request):
     data = request.data
@@ -83,11 +113,11 @@ def register(request):
     user_data['email'] = data['email']
     user_data['first_name'] = data['first_name']
     user_data['last_name'] = data['last_name']
-    # print(user_data)
     part_data['phone_number'] = data['phone_number']
     part_data['country'] = data['country']
-    print(data['photo'])
     part_data['photo'] = data['photo']
+    part_data['title'] = data['title']
+    part_data['skills'] = request.POST['skills'].split(',')
     # print(part_data)
     serializer = ParticipantSerializer(data= part_data)
     if serializer.is_valid():

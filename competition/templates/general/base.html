@@ -11,17 +11,83 @@
         {% endblock %}
     </title>
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'picker/picker.min.css' %}">
 </head>
 <body>
+    {% include 'css/nav-css.html' %}
     {% block style %}
-    <!-- Type the nav here  -->
     {% endblock %}
+    <div class='dashboard'>
+        <div class="dashboard-nav">
+            <header><a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="/"
+                                                                                       class="brand-logo"><i class="fas fa-cubes"></i> <span>Competitions</span></a></header>
+            <nav class="dashboard-nav-list">
+                <a href="/" class="dashboard-nav-item"><i class="fas fa-home"></i>
+                Home </a>
+                <a href="/profile" class="dashboard-nav-item"><i class="fas fa-user-circle"></i>
+                My Profile </a>
+                {% if user.is_authenticated %}
+                <a href="/participants" class="dashboard-nav-item"><i class="fas fa-users"></i> Participants </a>
+                <a href="/competitions" class="dashboard-nav-item"><i class="fab fa-free-code-camp"></i> Competitions </a>
+                    {% endif %}
+                <!-- <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                        class="fas fa-photo-video"></i> Media </a>
+                    <div class='dashboard-nav-dropdown-menu'><a href="#"
+                                                                class="dashboard-nav-dropdown-item">All</a><a
+                            href="#" class="dashboard-nav-dropdown-item">Recent</a><a
+                            href="#" class="dashboard-nav-dropdown-item">Images</a><a
+                            href="#" class="dashboard-nav-dropdown-item">Video</a></div>
+                </div>
+                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                        class="fas fa-users"></i> Users </a>
+                    <div class='dashboard-nav-dropdown-menu'><a href="#"
+                                                                class="dashboard-nav-dropdown-item">All</a><a
+                            href="#" class="dashboard-nav-dropdown-item">Subscribed</a><a
+                            href="#"
+                            class="dashboard-nav-dropdown-item">Non-subscribed</a><a
+                            href="#" class="dashboard-nav-dropdown-item">Banned</a><a
+                            href="#" class="dashboard-nav-dropdown-item">New</a></div>
+                </div>
+                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                        class="fas fa-money-check-alt"></i> Payments </a>
+                    <div class='dashboard-nav-dropdown-menu'><a href="#"
+                                                                class="dashboard-nav-dropdown-item">All</a><a
+                            href="#" class="dashboard-nav-dropdown-item">Recent</a><a
+                            href="#" class="dashboard-nav-dropdown-item"> Projections</a>
+                    </div>
+                </div>
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-cogs"></i> Settings </a>
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-user"></i> Profile </a> -->
+              <div class="nav-item-divider"></div>
+                {% if user.is_authenticated %}
+              <a href="/logout" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
+              {% else %}
+              <a href="/login" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Login | Register </a>
+              {% endif %}
+            </nav>
+        </div>
+        <div class='dashboard-app'>
+            <header class='dashboard-toolbar justify-content-between'>
+                <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                {% if user.is_authenticated %}
+                <h4>Hello, <span style="color: #443ea2;">{{user.first_name}}</span></h4>
+                {% endif %}
+            </header>
+            <div class='dashboard-content'>
+                <div class='container'>
+                    
     
-    {% block content %}
-
-    {% endblock %}
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="{% static 'jquery/jquery-3.6.0.min.js'%}" type="text/javascript"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js'%}" type="text/javascript"></script>
+    <script src="{% static 'picker/picker.min.js'%}" type="text/javascript"></script>
+    {% include 'scripts/nav-js.html' %}
     {% block scripts %}
 
     {% endblock %}
