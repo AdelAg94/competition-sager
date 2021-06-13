@@ -48,7 +48,7 @@
    <li> (Note) | (Optional) for the last point you can runserver on your local IP address with open port to open the website from mobile on the same network and here is an example:
   <br>
   <strong >python manage.py runserver 192.168.1.<your_last_ip_number>:2020</strong>
-    <strong >python manage.py runserver 192.168.1.71:2020</strong>
+    <strong>python manage.py runserver 192.168.1.71:2020</strong>
  </li>
 
      <li> After run the runserver command, you will see this output on Terminal VScode or cmd, then copy the ip:port 127.0.0.1:8000 or combine ctrl + left click 
