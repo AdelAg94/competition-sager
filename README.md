@@ -51,8 +51,7 @@
     <strong>python manage.py runserver 192.168.1.71:2020</strong>
  </li>
 
-     <li> After run the runserver command, you will see this output on Terminal VScode or cmd, then copy the ip:port 127.0.0.1:8000 or combine ctrl + left click 
-  <br>
+  <li> After run the runserver command, you will see this output on Terminal VScode or cmd, then copy the ip:port 127.0.0.1:8000 or combine ctrl + left click 
   <strong >System check identified no issues (0 silenced).
             <br>
            June 14, 2021 - 01:04:54
