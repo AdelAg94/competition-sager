@@ -7,6 +7,7 @@
  <li> requiremets.txt, if not found you can see these packages to install inside your virtual environment </li>
  <p> 
      django==3.2.4
+  <br>
      djangorestframework==3.12.2
      django-countries==7.2.1
      Pillow==8.1.2 
