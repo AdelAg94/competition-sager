@@ -25,9 +25,9 @@
             <nav class="dashboard-nav-list">
                 <a href="/" class="dashboard-nav-item"><i class="fas fa-home"></i>
                 Home </a>
+                {% if user.is_authenticated %}
                 <a href="/profile" class="dashboard-nav-item"><i class="fas fa-user-circle"></i>
                 My Profile </a>
-                {% if user.is_authenticated %}
                 <a href="/participants" class="dashboard-nav-item"><i class="fas fa-users"></i> Participants </a>
                 <a href="/competitions" class="dashboard-nav-item"><i class="fab fa-free-code-camp"></i> Competitions </a>
                     {% endif %}
@@ -71,7 +71,7 @@
             <header class='dashboard-toolbar justify-content-between'>
                 <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
                 {% if user.is_authenticated %}
-                <h4>Hello, <span style="color: #443ea2;"> <a href="/profile" class="text-decoration-none">{{user.first_name}}</a></span></h4>
+                <h4>Hello, <a href="/profile" class="text-decoration-none" style="color: white;">{{user.first_name}}</a></h4>
                 {% endif %}
             </header>
             <div class='dashboard-content'>
