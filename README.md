@@ -27,4 +27,16 @@
   <br>
   <strong >scripts/activate</strong> 
  </li>
+  <li> After activation of the venv, using cmd or VScode Terminal change directory (cd) to 'competition' folder
+  <br>
+  <strong >cd competition</strong> 
+ </li>
+   <li> Be sure that you are in the folder that has these files (manage.py , requirements.txt) by using ls command inside Terminal VScode or cmd
+  <br>
+  <strong >ls</strong> 
+ </li>
+    <li> install packages that are in requirements.txt file using this command in Terminal of VScode or cmd
+  <br>
+  <strong >pip install -r requirements.txt</strong> 
+ </li>
  </ol>
