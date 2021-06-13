@@ -74,7 +74,7 @@
  </li>
  </ol>
  
- <h3>Here you will list of participants for test to login, any one if you don't want you can register for a new user </h3>
+ <h3>Here you will see a list of participants/users for test to login, any one if you don't want you can register for a new user </h3>
  <table>
   <tr>
     <th>username</th>
@@ -137,3 +137,6 @@
     <td>normal user</td>
   </tr>
 </table>
+
+<h1>To add any competition and add more you need to user 'admin' user which superuser and go to 'doman/admin'  example '127.0.0.1:8000/admin' </h1>
+<p> Which is a built-in django admin interface </p>
