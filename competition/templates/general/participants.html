@@ -8,38 +8,45 @@
 {% endblock %}
 
 {% block content %}
+
 {% if country_participants %}
-<h2>
+<div class="card mb-5">
+  <h5 class="card-header">
     Here is a list of Participants lives in {{country.name}}
-  </h2>
-<div class="container">
-    <div class="row">
-        {% for part in country_participants %}
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <a href="/participant/{{part.id}}/" class="text-decoration-none">
-        <div class="our-team">
-          <div class="picture">
-            <img class="img-fluid" src="/media/{{part.photo}}">
+  </h5>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+          {% for part in country_participants %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <a href="/participant/{{part.id}}/" class="text-decoration-none">
+          <div class="our-team">
+            <div class="picture">
+              <img class="img-fluid" src="/media/{{part.photo}}">
+            </div>
+            <div class="team-content">
+              <h3 class="name">{{part.user.first_name}}</h3>
+              <h4 class="title">{{part.title}}</h4>
+            </div>
           </div>
-          <div class="team-content">
-            <h3 class="name">{{part.user.first_name}}</h3>
-            <h4 class="title">{{part.title}}</h4>
-          </div>
+          </a>
         </div>
-        </a>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
   </div>
+</div>
+
+
 
   {% endif %}
 
-  <h2>
-    Here is a list of all pariticipants that are not from {{country.name}}
-  </h2>
-
-    
-    <div class="container">
+  <div class="card">
+    <h5 class="card-header">
+      Here is a list of all pariticipants that are not from {{country.name}}
+    </h5>
+    <div class="card-body">
+      <div class="container">
         <div class="row">
             {% for part in other_participants %}
           <div class="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -58,6 +65,11 @@
           {% endfor %}
         </div>
       </div>
+    </div>
+  </div>
+
+    
+   
 
 {% endblock %}
 

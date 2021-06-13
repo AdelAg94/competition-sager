@@ -85,11 +85,11 @@
       </ol>
       </p>
 
-     <button class="recipe-save bg-info enrolled" type="button">
+     <button class="recipe-save bg-info enrolled" compt_id="{{compt.id}}" type="button">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
       </svg>
-       Already Enrolled
+       Enrolled
      </button>
 
    </div>
@@ -98,15 +98,34 @@
 {% endfor %}
 </div>
 
-
-<div class="alert alert-success alert-dismissible fade show" id="success-message" role="alert">
-  <span id="success-message-text">Great! You have enrolled</span>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<!-- Modal -->
+<div class="modal fade" id="leave-modal" tabindex="-1" role="dialog" aria-labelledby="leave-modal-label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="leave-modal-label">Confirmation</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" id="leave-hide" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to leave the competition?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="leave-decline">No</button>
+        <button type="button" class="btn btn-danger" id="leave-confirm">Yes</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="alert alert-danger alert-dismissible fade show" id="error-message" role="alert">
+<div class="alert alert-success fade show" id="success-message" role="alert">
+  <span id="success-message-text">Great! You have enrolled</span>
+  <button type="button" class="btn-close" id="close-success" aria-label="Close"></button>
+</div>
+
+<div class="alert alert-danger fade show" id="error-message" role="alert">
  <span id="error-message-text">Sorry! There is a problem, please try again</span>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <button type="button" class="btn-close" id="close-error" aria-label="Close"></button>
 </div>
 
 {% endblock %}

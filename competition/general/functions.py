@@ -5,8 +5,9 @@ def fullcompets(competition_query):
     competitions_new = []
     name = None
     counter = 0
-    comp_dic = {'name':0,'description':0,'photo':0,'quali':[]}
+    comp_dic = {'id':0,'name':0,'description':0,'photo':0,'quali':[]}
     for item in competition_query:
+        comp_dic['id'] = item['id']
         comp_dic['name'] = item['name']
         comp_dic['description'] = item['description']
         comp_dic['photo'] = item['photo']
@@ -35,16 +36,21 @@ def listCountryPartis(country):
 def enrolledcompets(request):
     user = request.user
     parti = Participant.objects.get(user=user)
-    compets = Competition.objects.filter(participants=parti).prefetch_related('qualifications').annotate(quali=F('qualifications__description')).values('name','description','photo','quali')
+    compets = Competition.objects.filter(participants=parti).prefetch_related('qualifications').annotate(quali=F('qualifications__description')).values('id','name','description','photo','quali')
     compets = fullcompets(compets)
     return compets
 
 def notenrolledcompets(request):
     user = request.user
     parti = Participant.objects.get(user=user)
-    compets = Competition.objects.exclude(participants=parti).prefetch_related('qualifications').annotate(quali=F('qualifications__description')).values('name','description','photo','quali')
+    compets = Competition.objects.exclude(participants=parti).prefetch_related('qualifications').annotate(quali=F('qualifications__description')).values('id','name','description','photo','quali')
     compets = fullcompets(compets)
     return compets
+
+def comptbyid(id):
+    compet = Competition.objects.filter(id=id).prefetch_related('qualifications').annotate(quali=F('qualifications__description')).values('name','description','photo','quali')
+    compet = fullcompets(compet)
+    return compet
 
 def adminUser(request):
     user = request.user

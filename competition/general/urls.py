@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import include
-from general.views import home, logIn, overview , register, logOut, participants, competitions, participant, profile, enroll
+from general.views import home, logIn, overview , register, logOut, participants, competitions, participant, profile, enroll, leave
 	
 
 urlpatterns = [
@@ -32,4 +32,5 @@ urlpatterns = [
     path('profile/', profile),
     path('competitions/', competitions),
     path('competition/<int:id>/enroll/', enroll),
+    path('competition/<int:id>/leave/', leave),
 ] 

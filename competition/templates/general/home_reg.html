@@ -3,13 +3,43 @@
 {{page_title}}
 {% endblock %}
 
+{% block style %}
+{% include 'css/home_reg-css.html' %}
+{% endblock %}
+
 {% block content %}
-
-
+<div class="row">
+    <div class="col-12">
+    <!-- these radio buttons hold state of which card is in front and which toggle button is visible -->
+    <input type="radio" name="sushi-lunch" id="happy-radio">
+    <input type="radio" name="sushi-lunch" id="lovers-radio" checked>
+  
+    <div class="selector">
+      <label for="happy-radio" class="happy-card">
+        <h1>Competitions</h1>
+        <ul>
+          <li>You will see competitions and enroll if like to join</li>
+        </ul>
+        <a href="/competitions"><p>See Competitions</p></a>
+      </label>
+  
+      <label for="lovers-radio" class="lovers-card">
+        <h1>Participants</h1>
+        <ul>
+          <li>You will see participants from your country</li>
+        </ul>
+        <a href="/participants"><p>See Participants</p></a>
+      </label>
+      
+      <label for="happy-radio" class="happy-pick">Switch to Competitions</label>
+      <label for="lovers-radio" class="lovers-pick">Switch to Participants</label>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
 <script>
-$("#hello").css('color','green')
+
 </script>
 {% endblock %}

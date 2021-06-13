@@ -8,7 +8,7 @@ from django.db.models import F
 from .forms import ParticipantForm_F
 from .serializers import ParticipantSerializer
 from .models import Participant, Competition
-from .functions import getPartiCountry, listCountryPartis, enrolledcompets, notenrolledcompets, fullcompets, adminUser
+from .functions import getPartiCountry, listCountryPartis, enrolledcompets, notenrolledcompets, fullcompets, adminUser, comptbyid
 # Create your views here.
 
 def overview(request):
@@ -164,11 +164,23 @@ def enroll(request, id):
     competition = Competition.objects.get(id=id)
     try:
         competition.participants.add(participant)
-        print('Complete done')
         return Response({'message':'Congrats! You have enrolled'})
     except Exception as e:
         error = []
         error.append(e.__str__())
         print('There is an error')
         return Response({'errors':error})
-        
+
+@login_required(login_url='/login')
+@api_view(['PUT'])
+def leave(request, id):
+    user = request.user
+    participant = Participant.objects.get(user=user)
+    competition = Competition.objects.get(id=id)
+    try:
+        competition.participants.remove(participant)
+        return Response({'message':'Done! You have left'})
+    except Exception as e:
+        error = []
+        error.append(e.__str__())
+        return Response({'errors':error})

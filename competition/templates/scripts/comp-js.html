@@ -1,6 +1,7 @@
 {% csrf_token %}
 <script>
     $(document).ready(function(){
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         // These for laptops and Pcs
         // var windows_width = $(window).width()
         var isMobile = false; //initiate as false
@@ -12,28 +13,31 @@
         else{
             isMobile = false;
         }
-        // This to change enrolled competitions button to red 
+        function activateHovers(){
+            // This to change enrolled competitions button to red 
         $(".enrolled").hover(function(){
             if( isMobile === false){
             $(this).removeClass('bg-info')
+            $(this).removeClass('bg-transparent')
             $(this).addClass('bg-danger')
             $(this).html(`
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M7.364 3.5a.5.5 0 0 1 .5-.5H14.5A1.5 1.5 0 0 1 16 4.5v10a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 3 14.5V7.864a.5.5 0 1 1 1 0V14.5a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5v-10a.5.5 0 0 0-.5-.5H7.864a.5.5 0 0 1-.5-.5z"></path>
             <path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h5a.5.5 0 0 1 0 1H1.707l8.147 8.146a.5.5 0 0 1-.708.708L1 1.707V5.5a.5.5 0 0 1-1 0v-5z"></path>
             </svg>
-            Disenroll
+            Leave
             `)
         }},
         function(){
             if( isMobile === false){
             $(this).removeClass('bg-danger')
+            $(this).removeClass('bg-transparent')
             $(this).addClass('bg-info')
             $(this).html(`
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
             </svg>
-            Already Enrolled
+            Enrolled
             `)
         }}
         )
@@ -41,24 +45,26 @@
         $(".enrolled").on('touchmove', function(e){
             e.preventDefault()
             $(this).removeClass('bg-info')
+            $(this).removeClass('bg-transparent')
             $(this).addClass('bg-danger')
             $(this).html(`
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M7.364 3.5a.5.5 0 0 1 .5-.5H14.5A1.5 1.5 0 0 1 16 4.5v10a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 3 14.5V7.864a.5.5 0 1 1 1 0V14.5a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5v-10a.5.5 0 0 0-.5-.5H7.864a.5.5 0 0 1-.5-.5z"></path>
             <path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h5a.5.5 0 0 1 0 1H1.707l8.147 8.146a.5.5 0 0 1-.708.708L1 1.707V5.5a.5.5 0 0 1-1 0v-5z"></path>
             </svg>
-            Disenroll
+            Leave
             `)
         })
         $(".enrolled").on('touchend', function(e){
             e.preventDefault()
             $(this).removeClass('bg-danger')
+            $(this).removeClass('bg-transparent')
             $(this).addClass('bg-info')
             $(this).html(`
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
             </svg>
-            Already Enrolled
+            Enrolled
             `)
         })
            
@@ -66,27 +72,63 @@
         $(".notenrolled").hover(function(){
             if( isMobile === false){
             $(this).removeClass('bg-transparent')
+            $(this).removeClass('bg-info')
+            $(this).removeClass('bg-danger')
             $(this).addClass('bg-success')
+            $(this).html(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save2-fill" viewBox="0 0 16 16">
+                <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z"/>
+                </svg>
+                Enroll
+                `)
         }},
         function(){
             if(isMobile === false){
             $(this).removeClass('bg-success')
+            $(this).removeClass('bg-info')
+            $(this).removeClass('bg-danger')
             $(this).addClass('bg-transparent')
+            $(this).html(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save2-fill" viewBox="0 0 16 16">
+                <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z"/>
+                </svg>
+                Enroll
+                `)
         }}
         )
+
         // These for mobile 
         $(".notenrolled").on('touchmove', function(e){
             e.preventDefault()
             $(this).removeClass('bg-transparent')
+            $(this).removeClass('bg-info')
+            $(this).removeClass('bg-danger')
             $(this).addClass('bg-success')
+            $(this).html(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save2-fill" viewBox="0 0 16 16">
+                <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z"/>
+                </svg>
+                Enroll
+                `)
         })
         $(".notenrolled").on('touchend', function(e){
             e.preventDefault()
             $(this).removeClass('bg-success')
+            $(this).removeClass('bg-info')
+            $(this).removeClass('bg-danger')
             $(this).addClass('bg-transparent')
+            $(this).html(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save2-fill" viewBox="0 0 16 16">
+                <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z"/>
+                </svg>
+                Enroll
+                `)
         })
-           
-        $(".enrolled").click(function(){
+          
+        // This to enroll an unenrolled competition
+        $(".notenrolled").off('click touchend')
+        $(".notenrolled").on('click touchend',function(){
+            var compt_btn = $(this)
             var compt_id = $(this).attr('compt_id')
             // This to enroll the competition
             $.ajax({
@@ -100,9 +142,6 @@
 	            contentType:false,
 	            processData:false,
 	            beforeSend: function(){
-	                // $("#preloader").css('display','block')
-	                // $("#preloader").css('z-index','10')
-	                // $("#preloader").css('opacity','0.7')
 	            },
 	            success: function(response){
 	               //This to check errors
@@ -112,18 +151,26 @@
 	                for (const e in response.errors) {
 					$("#error-message-text").html(response.errors[e])
 	                }
-                    $("#error-message").fadeOut(3000)
+                    $("#error-message").fadeOut(5000)
 
 	            }
 	            else{
 					$("#success-message-text").html('')
 					$("#success-message").css('display','block')
                     $("#success-message-text").html(response.message)
-                    $("#success-message").fadeOut(3000)
+                    $("#success-message").fadeOut(5000)
+                    compt_btn.removeClass('notenrolled')
+                    compt_btn.removeClass('bg-transparent')
+                    compt_btn.addClass('enrolled')
+                    compt_btn.addClass('bg-info')
+                    compt_btn.html(`
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </svg>
+                    Enrolled
+                    `)
+                    activateHovers()
 	                }
-                    // This will hide the competition and then show it as enrolled
-                    $(`.p-3[compt_id=${compt_id}]`).remove()
-                    
 	            },
 	            error: function(error){
 	                console.log(error)
@@ -134,6 +181,98 @@
         })
 
         })
+        
+        // This to leave an enrolled competition
+        $(".enrolled").off('click touchend')
+        $(".enrolled").on('click touchend',function(e){
+            e.preventDefault()
+            $("#leave-modal").css('display','block')
+            $("#leave-modal").css('opacity','1.0')
+            var compt_btn = $(this)
+            var compt_id = $(this).attr('compt_id')
+            // This to enroll the competition
+            $("#leave-confirm").off('click touchend')
+            // These to hide modal 
+            $("#leave-hide, #leave-decline, #leave-confirm").off('click touchend')
+            $("#leave-hide, #leave-decline, #leave-confirm").on('click touchend', function(e){
+            e.preventDefault()
+            $("#leave-modal").css('display','none')
+            $("#leave-modal").css('opacity','1.0')
+            })
+            $("#leave-confirm").on('click touchend',function(e){
+                console.log(compt_id)
+                e.preventDefault()
+                $.ajax({
+	            method: "PUT",
+	            // contentType:'application/json',
+	            headers: {
+	                'X-CSRFToken': csrftoken,
+	            },
+	            url: `/competition/${compt_id}/leave/`,
+	            // data: data,
+	            contentType:false,
+	            processData:false,
+	            beforeSend: function(){
+	            },
+	            success: function(response){
+	               //This to check errors
+	               if(response.errors){
+					$("#error-message-text").html('')
+					$("#error-message").css('display','block')
+	                for (const e in response.errors) {
+					$("#error-message-text").html(response.errors[e])
+	                }
+                    $("#error-message").fadeOut(5000)
+
+	            }
+	            else{
+					$("#success-message-text").html('')
+					$("#success-message").css('display','block')
+                    $("#success-message-text").html(response.message)
+                    $("#success-message").fadeOut(5000)
+                    compt_btn.removeClass('enrolled')
+                    compt_btn.removeClass('bg-info')
+                    compt_btn.addClass('notenrolled')
+                    compt_btn.addClass('bg-transparent')
+                    compt_btn.html(`
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save2-fill" viewBox="0 0 16 16">
+                    <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z"/>
+                    </svg>
+                    Enroll
+                    `)
+                    activateHovers()
+	                }
+	            },
+	            error: function(error){
+	                console.log(error)
+	            },
+	            complete: function(){
+
+	            }
+            })
+            } )
+           
+        })
+        // These to hide modal 
+        $("#leave-hide, #leave-decline, #leave-confirm").off('click touchend')
+        $("#leave-hide, #leave-decline, #leave-confirm").on('click touchend', function(e){
+        e.preventDefault()
+        $("#leave-modal").css('display','none')
+        $("#leave-modal").css('opacity','1.0')
+        })
+        
+        }
+
+        activateHovers()
+        
+        // To hide and show message based on click 
+        $("#close-success").on('click start', function(){
+            $("#success-message").css('display','none')
+        })
+        $("#close-error").on('click start', function(){
+            $("#error-message").css('display','none')
+        })
+
         $(window).resize(function(){
         // device detection
         if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 

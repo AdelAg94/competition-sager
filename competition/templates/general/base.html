@@ -71,7 +71,7 @@
             <header class='dashboard-toolbar justify-content-between'>
                 <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
                 {% if user.is_authenticated %}
-                <h4>Hello, <span style="color: #443ea2;">{{user.first_name}}</span></h4>
+                <h4>Hello, <span style="color: #443ea2;"> <a href="/profile" class="text-decoration-none">{{user.first_name}}</a></span></h4>
                 {% endif %}
             </header>
             <div class='dashboard-content'>
