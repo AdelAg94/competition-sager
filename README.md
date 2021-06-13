@@ -31,7 +31,7 @@
   <br>
   <strong >cd competition</strong> 
  </li>
-   <li> Be sure that you are in the folder that has these files (manage.py , requirements.txt) by using ls command inside Terminal VScode or cmd
+   <li>(Optional) Be sure that you are in the folder that has these files (manage.py , requirements.txt) by using ls command inside Terminal VScode or cmd
   <br>
   <strong >ls</strong> 
  </li>
