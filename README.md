@@ -138,5 +138,5 @@
   </tr>
 </table>
 
-<h1>To add any competition and add more you need to user 'admin' user which superuser and go to 'doman/admin'  example '127.0.0.1:8000/admin' </h1>
+<p>To add any competition and add more you need to user 'admin' user which superuser and go to 'doman/admin'  example '127.0.0.1:8000/admin' <p>
 <p> Which is a built-in django admin interface </p>
